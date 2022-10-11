@@ -1,0 +1,95 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:400,700,900|Aleo:700");
+
+.initial-screen {
+  background-image: url("img/pucentrada1.jpg");
+  background-color: #cccccc;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.bk-color-blue {
+  background-color: #000c76;
+  border: solid 1px #000c76;
+  font-size: 15px;
+  border-radius: 8px;
+  min-width: 150px;
+  min-height: 50px;
+  font-weight: 600;
+}
+
+.bk-color-white {
+  background-color: white;
+  color: #000c76;
+  border: solid 2px #000c76;
+  border-radius: 8px;
+  min-width: 150px;
+  font-size: 15px;
+  min-height: 50px;
+}
+
+.bk-color-blue-sm {
+  background-color: #000c76;
+  border: solid 1px #000c76;
+  font-size: 13px;
+  border-radius: 8px;
+  min-width: 100px;
+  min-height: 40px;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 19px;
+  color: #000c76;
+  font-weight: 600;
+}
+
+a {
+  text-decoration: none;
+  color: #000c76;
+  margin-top: 10px;
+}
+
+a.navbar-link {
+  margin-right: 15px;
+  display: flex;
+  justify-content: end;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.side-by-side {
+  width: 300px;
+  min-width: 250px;
+  margin: 5px;
+}
+
+.container-side-by-side {
+  width: auto;
+  height: 450px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+}
+
+.card-img,
+.card-img-bottom,
+.card-img-top {
+  height: 240px;
+}
+
+.link-cadastro {
+  font-size: 12px;
+  color: rgb(0, 132, 255);
+  font-weight: 600;
+}
+.profile {
+  font-size: 12px;
+  color: #000c76;
+  font-weight: 600;
+}
