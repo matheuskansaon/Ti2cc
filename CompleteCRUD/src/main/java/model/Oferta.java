@@ -9,7 +9,7 @@ public class Oferta {
 	/*
 	 * Constructor
 	 */
-	public Oferta(String name, String login, String password, String address, String urlLogo) {
+	public Oferta(String finaldate, int discount) {
 		//this.setID(RestauranteDAO.generatorID());
 		this.setFinaldate(finaldate);
 		this.setDiscount(discount);
