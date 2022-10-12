@@ -1,5 +1,6 @@
 package model;
 
+/*
 public class Produto {
 	private int id;
 	private double preco;
@@ -11,7 +12,8 @@ public class Produto {
 	/*
 	 * Constructor
 	 */
-/*	public Restaurante(int id, double preco, int ProdutoID, 
+/*
+	public Produto(int id, double preco, int ProdutoID, 
 			int RestauranteID, String urlLogo) {
 		//this.setID(RestauranteDAO.generatorID());
 		
@@ -22,7 +24,7 @@ public class Produto {
 		this.setUrlLogo(urlLogo);
 	}
 	
-	public Restaurante(int id, double preco, int ProdutoID, 
+	public Produto(int id, double preco, int ProdutoID, 
 			int RestauranteID, String urlLogo) {
 		
 		this.setID(id);
@@ -74,7 +76,9 @@ public class Produto {
 	}
 	public void setUrlLogo(String url) {
 		this.urlLogo = url;
-*/
+
 		
 	// End get, setters
+
 }
+*/

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-import model.Produto;
+//import model.Produto;
 /*
 public class ProdutoDAO extends DAO{
 	public ProdutoDAO() {
@@ -23,12 +23,10 @@ public class ProdutoDAO extends DAO{
 		try {
 			String sql = "INSERT INTO Produto (id, preco, ProdutoID, RestauranteID, "
 					   + "logo"
-		               + "VALUES ('" + restaurante.getID() + "', " + restaurante.getPreco() + ", "
-		               + restaurante.getProdutoID() + ", " + restaurante.getRestauranteID() + ", "
-		               + restaurante.getUrlLogo();
+		               + "VALUES ('" + produto.getID() + "', " + produto.getPreco() + ", "
+		               + produto.getProdutoID() + ", " + produto.getRestauranteID() + ", "
+		               + produto.getUrlLogo();
 			PreparedStatement st = conexao.prepareStatement(sql);
-		    //st.setTimestamp(1, Timestamp.valueOf(restaurante.getDataFabricacao()));
-			//st.setDate(2, Date.valueOf(restaurante.getDataValidade()));
 			st.executeUpdate();
 			st.close();
 			status = true;
@@ -38,8 +36,8 @@ public class ProdutoDAO extends DAO{
 		return status;
 	}
 	
-	public Restaurante get(int id) {
-		Restaurante restaurante = null;
+	public Produto get(int id) {
+		Produto produto = null;
 		
 		try {
 			Statement st = (Statement) conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
@@ -55,17 +53,17 @@ public class ProdutoDAO extends DAO{
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
-		return restaurante;
+		return produto;
 	}
 	
 
-	// RECUPERA LISTA DE RESTAURANTES
+	// RECUPERA LISTA DE PRODUTO
 	public List<Produto> get() {
-		List<Produto> restaurantes = new ArrayList<Produto>();
+		List<Produto> produto = new ArrayList<Produto>();
 		
 		try {
 			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			String sql = "SELECT * FROM restaurant" ;
+			String sql = "SELECT * FROM product" ;
 			ResultSet rs = st.executeQuery(sql);	           
 	        while(rs.next()) {	            	
 	        	produto r = new Produto(rs.getInt("id"), rs.getDouble("preco"), 
