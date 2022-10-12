@@ -22,10 +22,8 @@ public class ProdutoNomeeDAO extends DAO{
 		boolean status = false;
 		try {
 			String sql = "INSERT INTO ProdutoNome (id, name"
-		               + "VALUES ('" + restaurante.getId() + "', " + restaurante.getName();
+		               + "VALUES ('" + produtonome.getId() + "', " + produtonome.getName();
 			PreparedStatement st = conexao.prepareStatement(sql);
-		    //st.setTimestamp(1, Timestamp.valueOf(restaurante.getDataFabricacao()));
-			//st.setDate(2, Date.valueOf(restaurante.getDataValidade()));
 			st.executeUpdate();
 			st.close();
 			status = true;
@@ -49,11 +47,11 @@ public class ProdutoNomeeDAO extends DAO{
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
-		return restaurante;
+		return produtonome;
 	}
 	
 
-	// RECUPERA LISTA DE RESTAURANTES
+	// RECUPERA LISTA DE PRODUTONOME
 	public List<ProdutoNome> get() {
 		List<ProdutoNome> produtonome = new ArrayList<ProdutoNome>();
 		
