@@ -38,8 +38,8 @@ public class ProdutoDAO extends DAO{
 		return status;
 	}
 	
-	public Restaurante get(int id) {
-		Restaurante restaurante = null;
+	public Produto get(int id) {
+		Produto produto = null;
 		
 		try {
 			Statement st = (Statement) conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
@@ -65,7 +65,7 @@ public class ProdutoDAO extends DAO{
 		
 		try {
 			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			String sql = "SELECT * FROM restaurant" ;
+			String sql = "SELECT * FROM product" ;
 			ResultSet rs = st.executeQuery(sql);	           
 	        while(rs.next()) {	            	
 	        	produto r = new Produto(rs.getInt("id"), rs.getDouble("preco"), 
