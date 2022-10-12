@@ -1,7 +1,7 @@
 package model;
 
 public class Restaurante {
-	//private int ID;
+	private int id;
 	private String name;
 	private String login;
 	private String password;
@@ -12,8 +12,21 @@ public class Restaurante {
 	/*
 	 * Constructor
 	 */
-	public Restaurante(String name, String login, String password, String address, String urlLogo) {
+	public Restaurante(String name, String login, String password, 
+			String description, String address, String urlLogo) {
 		//this.setID(RestauranteDAO.generatorID());
+		
+		this.setName(name);
+		this.setLogin(login);
+		this.setPassword(password);
+		this.setAddress(address);
+		this.setUrlLogo(urlLogo);
+	}
+	
+	public Restaurante(int id, String name, String login, String password, 
+			String description, String address, String urlLogo) {
+		
+		this.setId(id);
 		this.setName(name);
 		this.setLogin(login);
 		this.setPassword(password);
@@ -52,7 +65,7 @@ public class Restaurante {
 	public void setLogin(String login) {
 		this.login = login;
 	}
-	public String getpassword() {
+	public String getPassword() {
 		return this.password;
 	}
 	public void setPassword(String password) {
@@ -69,6 +82,12 @@ public class Restaurante {
 	}
 	public void setUrlLogo(String url) {
 		this.urlLogo = url;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public int getId() {
+		return this.id;
 	}
 		
 	// End get, setters
