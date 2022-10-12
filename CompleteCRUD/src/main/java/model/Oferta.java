@@ -1,6 +1,6 @@
 package model;
 
-public class Restaurante {
+public class Oferta {
 	private int idOffer;
 	private String finaldate;
 	private int discount;
@@ -8,7 +8,7 @@ public class Restaurante {
 	/*
 	 * Constructor
 	 */
-	public Restaurante(String name, String login, String password, String address, String urlLogo) {
+	public Oferta(String name, String login, String password, String address, String urlLogo) {
 		//this.setID(RestauranteDAO.generatorID());
 		this.setFinaldate(finaldate);
 		this.setDiscount(discount);
@@ -31,14 +31,14 @@ public class Restaurante {
 		return this.finaldate;
 	}
 	public void setFinaldate(String finaldate) {
-		this.name = finaldate;
+		this.finaldate = finaldate;
 	}
-	public String getDiscount() {
+	public int getDiscount() {
 		return this.discount;
 	}
 	public void setDiscount(int discount) {
-		this.description = discount;
+		this.discount = discount;
 	}
-		
+	
 	// End get, setters
 }
