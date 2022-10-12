@@ -23,10 +23,8 @@ public class OfertaDAO extends DAO{
 		try {
 			String sql = "INSERT INTO Oferta (idOffer, finaldate, discount, product_id, "
 		               + "VALUES ('" + oferta.getID() + "', " + oferta.getFinaldate() + ", "
-		               + oferta.getDiscount() + ", " + restaurante.getProductId();
+		               + oferta.getDiscount() + ", " + oferta.getProductId();
 			PreparedStatement st = conexao.prepareStatement(sql);
-		    //st.setTimestamp(1, Timestamp.valueOf(restaurante.getDataFabricacao()));
-			//st.setDate(2, Date.valueOf(restaurante.getDataValidade()));
 			st.executeUpdate();
 			st.close();
 			status = true;
