@@ -8,12 +8,11 @@ public class OfertaNome {
 	 * Constructor
 	 */
 	public OfertaNome(int id, String nome) {
-		//this.setID(RestauranteDAO.generatorID());
 		this.setId(id);
 		this.setName(name);
 	}
 	
-	public Restaurante(int id, String name, String login, String password, 
+	public OfertaNome(int id, String name, String login, String password, 
 			String description, String address, String urlLogo) {
 		
 		this.setId(id);
