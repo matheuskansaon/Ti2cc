@@ -1,8 +1,11 @@
 package dao;
-import java.beans.Statement;
+import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 import model.Restaurante;
 
@@ -57,4 +60,28 @@ public class RestauranteDAO extends DAO{
 		}
 		return restaurante;
 	}
+	
+
+	// RECUPERA LISTA DE RESTAURANTES
+	public List<Restaurante> get() {
+		List<Restaurante> restaurantes = new ArrayList<Restaurante>();
+		
+		try {
+			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			String sql = "SELECT * FROM restaurant" ;
+			ResultSet rs = st.executeQuery(sql);	           
+	        while(rs.next()) {	            	
+	        	Restaurante r = new Restaurante(rs.getInt("id"), rs.getString("name"), rs.getString("login"), 
+										rs.getString("password"),  rs.getString("description"),
+										rs.getString("address"), rs.getString("logo"))
+	        			                ;
+	            restaurantes.add(r);
+	        }
+	        st.close();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return restaurantes;
+	}
 }
+

@@ -1,13 +1,18 @@
 const html = String.raw;
 
-window.onload = function listing() {
+async function readDataRestaurante() {
+  return fetch("/restaurantes").then((resp) => resp.json());
+}
+
+window.onload = async function listing() {
   /*
       List restaurant
 
    */
-  let data = readData();
+  let data = await readDataRestaurante();
+
   let strHTMl = "";
-  for (let i = 0; i < data.restaurant.length; i++) {
+  for (let i = 0; i < data.length; i++) {
     // console.log(data.restaurant[i].biography);
     strHTMl += html` <div
       class="col-6 bg-white p-1 border border-light border-5"
@@ -16,16 +21,16 @@ window.onload = function listing() {
         <div class="col-12 d-flex justify-content-center align-items-center">
           <img
             style="max-width:100px;width:100%"
-            src="${data.restaurant[i].picture}"
-            alt="${data.restaurant[i].name}"
-            onerror="this.src='img/not-found.png'"
+            src="${data[i].urlLogo}"
+            alt="${data[i].name}"
+            onerror="this.src='images/not-found.png'"
           />
         </div>
         <div class="row">
           <div class="col-12 mt-2">
-            <h6>${data.restaurant[i].name}</h6>
-            <p>${data.restaurant[i].biography}</p>
-            <p>${data.restaurant[i].address1}</p>
+            <h6>${data[i].name}</h6>
+            <p>${data[i].description}</p>
+            <p>${data[i].address}</p>
           </div>
         </div>
       </div>
@@ -36,7 +41,7 @@ window.onload = function listing() {
   // End Restaurant
 
   /*
-        List product 
+        List product NÃO ESTÁ FEITO
    */
   let products = readProduct();
   let strProduct = "";
