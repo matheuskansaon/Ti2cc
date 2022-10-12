@@ -8,7 +8,7 @@ import java.util.List;
 
 
 import model.Oferta;
-
+/*
 public class OfertaDAO extends DAO{
 	public OfertaDAO() {
 		conectar();
@@ -75,5 +75,6 @@ public class OfertaDAO extends DAO{
 			System.err.println(e.getMessage());
 		}
 		return oferta;
-	}
+	}	
 }
+*/

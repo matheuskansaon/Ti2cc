@@ -8,7 +8,7 @@ import java.util.List;
 
 
 import model.Produto;
-
+/*
 public class ProdutoDAO extends DAO{
 	public ProdutoDAO() {
 		conectar();
@@ -82,3 +82,4 @@ public class ProdutoDAO extends DAO{
 		return produto;
 	}
 }
+*/

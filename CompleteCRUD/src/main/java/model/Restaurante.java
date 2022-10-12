@@ -21,11 +21,10 @@ public class Restaurante {
 		this.setPassword(password);
 		this.setAddress(address);
 		this.setUrlLogo(urlLogo);
-		this.setDescription(description);
 	}
 	
 	public Restaurante(int id, String name, String login, String password, 
-			String description, String address, String urlLogo) {
+			String description, String address, String urlLogo) {	
 		
 		this.setId(id);
 		this.setName(name);
@@ -33,7 +32,6 @@ public class Restaurante {
 		this.setPassword(password);
 		this.setAddress(address);
 		this.setUrlLogo(urlLogo);
-		this.setDescription(description);
 	}
 	// End Constructor
 	
