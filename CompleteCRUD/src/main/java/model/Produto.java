@@ -1,84 +1,70 @@
 package model;
 
-/*
-public class Produto {
+public class Produto{
+	
 	private int id;
-	private double preco;
-	private int ProdutoID;
-	private int RestauranteID;
-	private String urlLogo;
+	private String image;
+	private double price;
+	private int product_id;
+	private int restaurant_id;
+	
+	public Produto(int id, String image, double price, int product_id, int restaurant_id) {
+		super();
+		this.id = id;
+		this.image = image;
+		this.price = price;
+		this.product_id = product_id;
+		this.restaurant_id = restaurant_id;
+	}
+	
+	
+	public Produto() {
+		super();
+	}
 
-	
-	/*
-	 * Constructor
-	 */
-/*
-	public Produto(int id, double preco, int ProdutoID, 
-			int RestauranteID, String urlLogo) {
-		//this.setID(RestauranteDAO.generatorID());
-		
-		this.setID(id);
-		this.setPreco(preco);
-		this.setProdutoID(ProdutoID);
-		this.setRestauranteID(RestauranteID);
-		this.setUrlLogo(urlLogo);
+
+	public int getId() {
+		return id;
 	}
-	
-	public Produto(int id, double preco, int ProdutoID, 
-			int RestauranteID, String urlLogo) {
-		
-		this.setID(id);
-		this.setPreco(preco);
-		this.setProdutoID(ProdutoID);
-		this.setRestauranteID(RestauranteID);
-		this.setUrlLogo(urlLogo);
-	}
-	// End Constructor
-	
-	
-	/*
-	 * Methods gets and setters
-	 */
-	
-	
-	/* ID
-		public int getID() { return this.ID; }
-		public void setID(int id) {
-			this.ID = id;
-		}
-	*/
-/*	public int getID() {
-		return this.id;
-	}
-	public void setID(int id) {
+
+	public void setId(int id) {
 		this.id = id;
 	}
-	public double getPreco() {
-		return this.description;
-	}
-	public void setPreco(String preco) {
-		this.preco = preco;
-	}
-	public int getProdutoID() {
-		return this.ProdutoID;
-	}
-	public void setProdutoID(int ProdutoID) {
-		this.ProdutoID = ProdutoID;
-	}
-	public int getRestauranteID() {
-		return this.RestauranteID;
-	}
-	public void setRestauranteID(int RestauranteID) {
-		this.RestauranteID = RestauranteID;
-	}
-	public String getUrlLogo() {
-		return this.urlLogo;
-	}
-	public void setUrlLogo(String url) {
-		this.urlLogo = url;
 
-		
-	// End get, setters
+	public String getImage() {
+		return image;
+	}
 
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public int getProduct_id() {
+		return product_id;
+	}
+
+	public void setProduct_id(int product_id) {
+		this.product_id = product_id;
+	}
+
+	public int getRestaurant_id() {
+		return restaurant_id;
+	}
+
+	public void setRestaurant_id(int restaurant_id) {
+		this.restaurant_id = restaurant_id;
+	}
+
+	
+	
+	
+	
 }
-*/

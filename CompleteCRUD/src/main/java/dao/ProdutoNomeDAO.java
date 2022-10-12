@@ -6,11 +6,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.Produto;
+import model.ProdutoNome;
+
 
 //import model.ProdutoNome;
-/*
-public class ProdutoNomeeDAO extends DAO{
-	public ProdutoNome() {
+
+public class ProdutoNomeDAO extends DAO{
+	
+	public ProdutoNomeDAO() {
 		conectar();
 	}
 
@@ -18,6 +22,29 @@ public class ProdutoNomeeDAO extends DAO{
 		close();
 	}
 	
+	public List<ProdutoNome> get() {
+			
+			List<ProdutoNome> produtosNome = new ArrayList<ProdutoNome>();
+			
+	
+			try {
+				Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+				String sql = "SELECT * FROM product_name" ;
+				ResultSet rs = st.executeQuery(sql);	           
+		        while(rs.next()) {	            	
+		        	ProdutoNome pn = new ProdutoNome(rs.getInt("id"), rs.getString("name"));
+		        			                
+		            produtosNome.add(pn);
+		        }
+		        st.close();
+			} catch (Exception e) {
+				System.err.println(e.getMessage());
+			}
+			return produtosNome;
+		}
+	
+	
+	/*
 	public boolean insert(ProdutoNome produtonome) {
 		boolean status = false;
 		try {
@@ -51,24 +78,7 @@ public class ProdutoNomeeDAO extends DAO{
 	}
 	
 
-	// RECUPERA LISTA DE PRODUTONOME
-	public List<ProdutoNome> get() {
-		List<ProdutoNome> produtonome = new ArrayList<ProdutoNome>();
-		
-		try {
-			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			String sql = "SELECT * FROM ProdutoNome" ;
-			ResultSet rs = st.executeQuery(sql);	           
-	        while(rs.next()) {	            	
-	        	produtonome = new ProdutoNome(rs.getInt("id"), rs.getString("name"));
-	        			                ;
-	            produtonome.add(r);
-	        }
-	        st.close();
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-		}
-		return produtonome;
-	}
+	
+	*/
 }
-*/
+

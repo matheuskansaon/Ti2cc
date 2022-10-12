@@ -7,8 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-//import model.Produto;
-/*
+import model.Produto;
+import model.Restaurante;
+
 public class ProdutoDAO extends DAO{
 	public ProdutoDAO() {
 		conectar();
@@ -18,6 +19,30 @@ public class ProdutoDAO extends DAO{
 		close();
 	}
 	
+	public List<Produto> get() {
+		
+		List<Produto> produtos = new ArrayList<Produto>();
+		
+
+		try {
+			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			String sql = "SELECT * FROM product" ;
+			ResultSet rs = st.executeQuery(sql);	           
+	        while(rs.next()) {	            	
+	        	Produto p = new Produto(rs.getInt("id"), rs.getString("image"), rs.getDouble("price"), 
+										rs.getInt("product_id"),  rs.getInt("restaurant_id"));
+	        			                
+	            produtos.add(p);
+	        }
+	        st.close();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return produtos;
+	}
+	
+	
+	/*	
 	public boolean insert(Produto produto) {
 		boolean status = false;
 		try {
@@ -57,27 +82,7 @@ public class ProdutoDAO extends DAO{
 	}
 	
 
-	// RECUPERA LISTA DE PRODUTO
-	public List<Produto> get() {
-		List<Produto> produto = new ArrayList<Produto>();
-		
-		try {
-			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			String sql = "SELECT * FROM product" ;
-			ResultSet rs = st.executeQuery(sql);	           
-	        while(rs.next()) {	            	
-	        	produto r = new Produto(rs.getInt("id"), rs.getDouble("preco"), 
-	        			 			   rs.getInt("ProdutoID"), 
-	                				   rs.getInt("RestauranteID"),
-	                				   rs.getString("logo"))
-	        			                ;
-	            produto.add(r);
-	        }
-	        st.close();
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-		}
-		return produto;
-	}
+	
+	*/
 }
-*/
+
