@@ -4,6 +4,7 @@ public class Oferta {
 	private int idOffer;
 	private String finaldate;
 	private int discount;
+	private int product_id;
 	
 	/*
 	 * Constructor
@@ -21,8 +22,11 @@ public class Oferta {
 	 */
 	
 	
-	/* ID
-		public int getID() { return this.ID; }
+	
+	public int getID() {
+		return this.idOffer; 
+		}
+		/* ID
 		public void setID(int id) {
 			this.ID = id;
 		}
@@ -38,6 +42,13 @@ public class Oferta {
 	}
 	public void setDiscount(int discount) {
 		this.discount = discount;
+	}
+	
+	public int getProduct_id() {
+		return this.product_id;
+	}
+	public void setProduct_id(int product_id) {
+		this.product_id = product_id;
 	}
 	
 	// End get, setters
