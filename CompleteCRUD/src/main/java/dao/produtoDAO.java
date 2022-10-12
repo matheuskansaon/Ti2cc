@@ -23,12 +23,10 @@ public class ProdutoDAO extends DAO{
 		try {
 			String sql = "INSERT INTO Produto (id, preco, ProdutoID, RestauranteID, "
 					   + "logo"
-		               + "VALUES ('" + restaurante.getID() + "', " + restaurante.getPreco() + ", "
-		               + restaurante.getProdutoID() + ", " + restaurante.getRestauranteID() + ", "
-		               + restaurante.getUrlLogo();
+		               + "VALUES ('" + produto.getID() + "', " + produto.getPreco() + ", "
+		               + produto.getProdutoID() + ", " + produto.getRestauranteID() + ", "
+		               + produto.getUrlLogo();
 			PreparedStatement st = conexao.prepareStatement(sql);
-		    //st.setTimestamp(1, Timestamp.valueOf(restaurante.getDataFabricacao()));
-			//st.setDate(2, Date.valueOf(restaurante.getDataValidade()));
 			st.executeUpdate();
 			st.close();
 			status = true;
@@ -55,13 +53,13 @@ public class ProdutoDAO extends DAO{
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
-		return restaurante;
+		return produto;
 	}
 	
 
-	// RECUPERA LISTA DE RESTAURANTES
+	// RECUPERA LISTA DE PRODUTO
 	public List<Produto> get() {
-		List<Produto> restaurantes = new ArrayList<Produto>();
+		List<Produto> produto = new ArrayList<Produto>();
 		
 		try {
 			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
