@@ -62,7 +62,7 @@ public class OfertaDAO extends DAO{
 		
 		try {
 			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			String sql = "SELECT * FROM restaurant" ;
+			String sql = "SELECT * FROM offer" ;
 			ResultSet rs = st.executeQuery(sql);	           
 	        while(rs.next()) {	            	
 	        	Oferta r = new Oferta(rs.getInt("id"), rs.getString("data_final"), 
