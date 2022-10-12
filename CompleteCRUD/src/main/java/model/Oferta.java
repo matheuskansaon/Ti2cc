@@ -44,10 +44,10 @@ public class Oferta {
 		this.discount = discount;
 	}
 	
-	public int getProduct_id() {
+	public int getProductId() {
 		return this.product_id;
 	}
-	public void setProduct_id(int product_id) {
+	public void setProduct_id(int productId) {
 		this.product_id = product_id;
 	}
 	
