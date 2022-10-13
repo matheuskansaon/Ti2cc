@@ -63,13 +63,14 @@ public class RestauranteDAO extends DAO{
 	
 
 	// RECUPERA LISTA DE RESTAURANTES
-	public List<Restaurante> get() {
+	public List<Restaurante> get(String search) {
 		List<Restaurante> restaurantes = new ArrayList<Restaurante>();
 		
 		try {
-			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			String sql = "SELECT * FROM restaurant" ;
-			ResultSet rs = st.executeQuery(sql);	           
+			String sql = "SELECT * FROM restaurant where name like ?";
+			PreparedStatement st = conexao.prepareStatement(sql);
+			st.setString(1, "%" + search + "%");
+			ResultSet rs = st.executeQuery();	           
 	        while(rs.next()) {	            	
 	        	Restaurante r = new Restaurante(rs.getInt("id"), rs.getString("name"), rs.getString("login"), 
 										rs.getString("password"),  rs.getString("description"),

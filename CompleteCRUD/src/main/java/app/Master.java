@@ -20,18 +20,18 @@ public class Master {
 		 Gson gson = new Gson();
 		
 		get("/restaurantes", (req, res) -> {
+			String search = req.queryParamOrDefault("search", "");
 			RestauranteDAO dao = new RestauranteDAO();
-			List<Restaurante> restaurantes = dao.get();
-			
+			List<Restaurante> restaurantes = dao.get(search);			
 			res.type("application/json");
 			return restaurantes;
 		}, gson::toJson);
 		
 			
 		get("/produtos", (req, res) -> {
+			String search = req.queryParamOrDefault("search", "");
 			ProdutoDAO dao = new ProdutoDAO();
-			List<Produto> produtos = dao.get();
-			
+			List<Produto> produtos = dao.get(search);			
 			res.type("application/json");
 			return produtos;
 		}, gson::toJson);

@@ -19,13 +19,13 @@ public class ProdutoDAO extends DAO{
 		close();
 	}
 	
-	public List<Produto> get() {
+	public List<Produto> get(String search) {
 		
 		List<Produto> produtos = new ArrayList<Produto>();
 		
 
 		try {
-			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			
 			String sql = "SELECT \r\n"
 					+ "product.id as \"product_id\",\r\n"
 					+ "product.image as \"product_image\", \r\n"
@@ -43,8 +43,12 @@ public class ProdutoDAO extends DAO{
 					+ "restaurant.logo as \"restaurant_logo\"\r\n"
 					+ "FROM product\r\n"
 					+ "JOIN product_name ON product_name.id = product.product_id\r\n"
-					+ "JOIN restaurant ON restaurant.id = product.restaurant_id;" ;
-			ResultSet rs = st.executeQuery(sql);	           
+					+ "JOIN restaurant ON restaurant.id = product.restaurant_id\r\n"
+					+ "WHERE product_name.name like ? or restaurant.name like ?";
+			PreparedStatement st = conexao.prepareStatement(sql);
+			st.setString(1, "%" + search + "%");
+			st.setString(2, "%" + search + "%");
+			ResultSet rs = st.executeQuery();	           
 	        while(rs.next()) {	
 	        	
 	        	Produto p = new Produto(rs.getInt("product_id"), rs.getString("product_image"), rs.getDouble("product_price"), 

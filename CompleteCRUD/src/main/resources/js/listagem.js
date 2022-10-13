@@ -1,11 +1,24 @@
 const html = String.raw;
 
 async function readDataRestaurante() {
-  return fetch("/restaurantes").then((resp) => resp.json());
+  return fetch("/restaurantes" + location.search).then((resp) => resp.json());
 }
 
 async function readDataProduct() {
-  return fetch("/produtos").then((resp) => resp.json());
+  return fetch("/produtos" + location.search).then((resp) => resp.json());
+}
+
+// Atualiza a tela com o termo de busca
+/** @type {HTMLFormElement | null} */
+const searchForm = document.querySelector("#search-form");
+if (searchForm) {
+  searchForm.addEventListener("submit", () => {
+    const formData = new FormData(searchForm);
+    const search = formData.get("search");
+    if (search) {
+      window.location.href = `/?search=${search}`;
+    }
+  });
 }
 
 window.onload = async function listing() {
@@ -41,7 +54,10 @@ window.onload = async function listing() {
     </div>`;
   }
 
-  document.getElementById("listagem").innerHTML = strHTMl;
+  const listagem = document.getElementById("listagem");
+  if (listagem) {
+    listagem.innerHTML = strHTMl;
+  }
   // End Restaurant
 
   /*
@@ -88,7 +104,10 @@ window.onload = async function listing() {
     `;
   }
   // console.log("produtos: " + strProduct);
-  document.querySelector("#listagemProduto").innerHTML = strProduct;
+  const listagemProduto = document.querySelector("#listagemProduto");
+  if (listagemProduto) {
+    listagemProduto.innerHTML = strProduct;
+  }
 
   // End List
   //tela.innerHTML = strHTMl;
