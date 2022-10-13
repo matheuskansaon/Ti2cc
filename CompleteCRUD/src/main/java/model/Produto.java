@@ -24,6 +24,17 @@ public class Produto{
 
 
 	
+	public Produto(int id, String image, double price, int product_id, int restaurant_id) {
+		super();
+		this.id = id;
+		this.image = image;
+		this.price = price;
+		this.product_id = product_id;
+		this.restaurant_id = restaurant_id;
+	}
+
+
+
 	public Produto() {
 		super();
 	}
