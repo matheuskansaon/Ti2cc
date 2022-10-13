@@ -66,15 +66,14 @@ public class ProdutoDAO extends DAO{
 	}
 	
 	
-	/*	
+		
 	public boolean insert(Produto produto) {
 		boolean status = false;
 		try {
-			String sql = "INSERT INTO Produto (id, preco, ProdutoID, RestauranteID, "
-					   + "logo"
-		               + "VALUES ('" + produto.getID() + "', " + produto.getPreco() + ", "
-		               + produto.getProdutoID() + ", " + produto.getRestauranteID() + ", "
-		               + produto.getUrlLogo();
+			String sql = "INSERT INTO product (id, image, price, product_id, restaurante_id) "
+		               + "VALUES ('" + produto.getId() + "', " + produto.getImage() + ", "
+		               + produto.getPrice() + ", " + produto.getProduct_id() + ", "
+		               + produto.getRestaurant_id() + ");";
 			PreparedStatement st = conexao.prepareStatement(sql);
 			st.executeUpdate();
 			st.close();
@@ -85,18 +84,19 @@ public class ProdutoDAO extends DAO{
 		return status;
 	}
 	
+	
 	public Produto get(int id) {
 		Produto produto = null;
 		
 		try {
 			Statement st = (Statement) conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			String sql = "SELECT * FROM produto WHERE id="+id;
+			String sql = "SELECT * FROM product WHERE id="+id + ";";
 			ResultSet rs = ((java.sql.Statement) st).executeQuery(sql);	
 	        if(rs.next()){            
-	        	 produto = new Produto(rs.getInt("id"), rs.getDouble("preco"), 
-	        			 			   rs.getInt("ProdutoID"), 
-	                				   rs.getInt("RestauranteID"),
-	                				   rs.getString("logo"));
+	        	 produto = new Produto(rs.getInt("id"), rs.getString("image"), rs.getDouble("price"), 
+	        			 			   rs.getInt("product_id"), 
+	                				   rs.getInt("Rrestaurant_id")
+	                				   );
 	        }
 	        ((java.sql.Statement) st).close();
 		} catch (Exception e) {
@@ -105,8 +105,42 @@ public class ProdutoDAO extends DAO{
 		return produto;
 	}
 	
-
+	public boolean delete(int id) {
+		boolean status = false;
+		
+		try {
+			Statement st = (Statement) conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+			String sql = "DELETE FROM product WHERE id="+id + ";";
+			((java.sql.Statement) st).executeQuery(sql);	
+	        
+	        ((java.sql.Statement) st).close();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		
+		return status;
+		
+	}
 	
+	/*
+	public boolean update(Produto produto, int id) {
+		boolean status = false;
+		try {
+			String sql = "UPDATE product SET id, image, price, product_id, restaurante_id, "
+		               + "VALUES ('" + produto.getId() + "', " + produto.getImage() + ", "
+		               + produto.getPrice() + ", " + produto.getProduct_id() + ", "
+		               + produto.getRestaurant_id();
+			PreparedStatement st = conexao.prepareStatement(sql);
+			st.executeUpdate();
+			st.close();
+			status = true;
+		} catch (SQLException u) {  
+			throw new RuntimeException(u);
+		}
+		return status;
+	}
 	*/
+	
+	
 }
 
