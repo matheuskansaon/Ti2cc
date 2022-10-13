@@ -18,27 +18,7 @@ public class OfertaDAO extends DAO{
 		close();
 	}
 	
-	public List<Oferta> get() {
-		
-		List<Oferta> oferta = new ArrayList<Oferta>();
-		
-
-		try {
-			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			String sql = "SELECT * FROM offer" ;
-			ResultSet rs = st.executeQuery(sql);	           
-	        while(rs.next()) {	            	
-	        	Oferta o = new Oferta(rs.getInt("id"), rs.getString("finaldate"), rs.getInt("discount"), 
-	        					rs.getInt("product_id"));
-	        			                
-	            oferta.add(o);
-	        }
-	        st.close();
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-		}
-		return oferta;
-	}
+	
 	
 	/*
 	public boolean insert(Oferta oferta) {

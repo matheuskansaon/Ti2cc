@@ -22,26 +22,7 @@ public class ProdutoNomeDAO extends DAO{
 		close();
 	}
 	
-	public List<ProdutoNome> get() {
-			
-			List<ProdutoNome> produtosNome = new ArrayList<ProdutoNome>();
-			
 	
-			try {
-				Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-				String sql = "SELECT * FROM product_name" ;
-				ResultSet rs = st.executeQuery(sql);	           
-		        while(rs.next()) {	            	
-		        	ProdutoNome pn = new ProdutoNome(rs.getInt("id"), rs.getString("name"));
-		        			                
-		            produtosNome.add(pn);
-		        }
-		        st.close();
-			} catch (Exception e) {
-				System.err.println(e.getMessage());
-			}
-			return produtosNome;
-		}
 	
 	
 	/*

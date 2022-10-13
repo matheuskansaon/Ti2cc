@@ -5,13 +5,9 @@ import java.util.List;
 
 import com.google.gson.Gson;
 
-import dao.OfertaDAO;
 import dao.ProdutoDAO;
-import dao.ProdutoNomeDAO;
 import dao.RestauranteDAO;
-import model.Oferta;
 import model.Produto;
-import model.ProdutoNome;
 import model.Restaurante;
 
 
@@ -40,21 +36,7 @@ public class Master {
 			return produtos;
 		}, gson::toJson);
 		
-		get("/produtos_name", (req, res) -> {
-			ProdutoNomeDAO dao = new ProdutoNomeDAO();
-			List<ProdutoNome> produtosNome = dao.get();
-			
-			res.type("application/json");
-			return produtosNome;
-		}, gson::toJson);
 		
-		get("/oferta", (req, res) -> {
-			OfertaDAO dao = new OfertaDAO();
-			List<Oferta> ofertas = dao.get();
-			
-			res.type("application/json");
-			return ofertas;
-		}, gson::toJson);
 			
 	}
 

@@ -24,6 +24,10 @@ public class Restaurante {
 		this.setDescription(description);
 	}
 	
+	
+
+
+
 	public Restaurante(int id, String name, String login, String password, 
 			String description, String address, String urlLogo) {	
 		

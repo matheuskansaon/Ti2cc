@@ -7,16 +7,22 @@ public class Produto{
 	private double price;
 	private int product_id;
 	private int restaurant_id;
+	private Restaurante restaurante;
+	private String name;
 	
-	public Produto(int id, String image, double price, int product_id, int restaurant_id) {
+	public Produto(int id, String image, double price, int product_id, int restaurant_id, Restaurante restaurante,
+			String name) {
 		super();
 		this.id = id;
 		this.image = image;
 		this.price = price;
 		this.product_id = product_id;
 		this.restaurant_id = restaurant_id;
+		this.restaurante = restaurante;
+		this.name = name;
 	}
-	
+
+
 	
 	public Produto() {
 		super();
@@ -61,6 +67,30 @@ public class Produto{
 
 	public void setRestaurant_id(int restaurant_id) {
 		this.restaurant_id = restaurant_id;
+	}
+
+
+
+	public Restaurante getRestaurante() {
+		return restaurante;
+	}
+
+
+
+	public void setRestaurante(Restaurante restaurante) {
+		this.restaurante = restaurante;
+	}
+
+
+
+	public String getName() {
+		return name;
+	}
+
+
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	

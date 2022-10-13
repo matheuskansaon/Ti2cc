@@ -4,6 +4,10 @@ async function readDataRestaurante() {
   return fetch("/restaurantes").then((resp) => resp.json());
 }
 
+async function readDataProduct() {
+  return fetch("/produtos").then((resp) => resp.json());
+}
+
 window.onload = async function listing() {
   /*
       List restaurant
@@ -42,21 +46,26 @@ window.onload = async function listing() {
 
   /*
         List product NÃO ESTÁ FEITO
+
+
    */
-  let products = readProduct();
+
+  let products = await readDataProduct();
+
   let strProduct = "";
+
   // console.log(products);
-  for (let i = products.data.length - 1; i >= 0; i--) {
-    let nome = buscaNome(products.data[i].id_rest);
-    let logo = buscaproduto(products.data[i].id_rest);
+  for (let i = products.length - 1; i >= 0; i--) {
+    let nome = products[i].restaurante.name;
+    let logo = products[i].restaurante.urlLogo;
     strProduct += html`
       <div class="side-by-side">
         <div class="card">
           <img
-            src=${products.data[i].urlFoto}
+            src=${products[i].image}
             class="card-img-top"
-            alt="${products.data[i].nome}"
-            onerror="this.src='img/not-found.png'"
+            alt="${products[i].name}"
+            onerror="this.src='imagem/not-found.png'"
           />
           <div class="card-body">
             <div class="row">
@@ -68,8 +77,8 @@ window.onload = async function listing() {
                 />
               </div>
               <div class="col-8">
-                <h5 class="card-title">${products.data[i].nome}</h5>
-                <p class="card-text">${products.data[i].preco}</p>
+                <h5 class="card-title">${products[i].name}</h5>
+                <p class="card-text">${products[i].price}</p>
                 <p class="card-text">${nome}</p>
               </div>
             </div>
@@ -84,26 +93,3 @@ window.onload = async function listing() {
   // End List
   //tela.innerHTML = strHTMl;
 };
-
-function buscaproduto(identifica) {
-  let da = readData();
-  let logo;
-  for (y = 0; y < da.restaurant.length; y++) {
-    if (identifica == da.restaurant[y].id) {
-      logo = da.restaurant[y].picture;
-    }
-  }
-  return logo;
-}
-
-function buscaNome(identifica) {
-  let res = readData();
-  let nome;
-  let length = res.restaurant.length;
-  for (x = 0; x < length; x++) {
-    if (identifica == res.restaurant[x].id) {
-      nome = res.restaurant[x].name;
-    }
-  }
-  return nome;
-}
