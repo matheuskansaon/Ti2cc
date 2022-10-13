@@ -37,7 +37,7 @@ window.onload = async function listing() {
       <div class="row">
         <div class="col-12 d-flex justify-content-center align-items-center">
           <img
-            style="max-width:100px;width:100%"
+            style="max-width:100px;width:100%; height:100px"
             src="${data[i].urlLogo}"
             alt="${data[i].name}"
             onerror="this.src='images/not-found.png'"
@@ -60,11 +60,7 @@ window.onload = async function listing() {
   }
   // End Restaurant
 
-  /*
-        List product NÃO ESTÁ FEITO
-
-
-   */
+  // List products
 
   let products = await readDataProduct();
 
@@ -89,12 +85,12 @@ window.onload = async function listing() {
                 <img
                   src="${logo}"
                   alt="logo restaurante"
-                  style="height: 70px"
+                  style="height: 60px;width:60px "
                 />
               </div>
               <div class="col-8">
                 <h5 class="card-title">${products[i].name}</h5>
-                <p class="card-text">${products[i].price}</p>
+                <p class="card-text">R$ ${products[i].price}</p>
                 <p class="card-text">${nome}</p>
               </div>
             </div>
@@ -108,7 +104,4 @@ window.onload = async function listing() {
   if (listagemProduto) {
     listagemProduto.innerHTML = strProduct;
   }
-
-  // End List
-  //tela.innerHTML = strHTMl;
 };

@@ -18,6 +18,10 @@ public class Master {
 		port(6789);
 		staticFiles.location("/");
 		 Gson gson = new Gson();
+		 
+		 
+		 
+		 // Métodos para listar restaurantes e produtos na página inicial
 		
 		get("/restaurantes", (req, res) -> {
 			String search = req.queryParamOrDefault("search", "");
