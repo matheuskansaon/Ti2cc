@@ -20,13 +20,13 @@ public class OfertaDAO extends DAO{
 	
 	
 	
-	/*
+	
 	public boolean insert(Oferta oferta) {
 		boolean status = false;
 		try {
-			String sql = "INSERT INTO Oferta (idOffer, finaldate, discount, product_id, "
-		               + "VALUES ('" + oferta.getID() + "', " + oferta.getFinaldate() + ", "
-		               + oferta.getDiscount() + ", " + oferta.getProductId();
+			String sql = "INSERT INTO offer (id, finaldate, discount, product_id) "
+		               + "VALUES ('" + oferta.getId() + "', " + oferta.getFinaldate() + ", "
+		               + oferta.getDiscount() + ", " + oferta.getProduct_id() + ");";
 			PreparedStatement st = conexao.prepareStatement(sql);
 			st.executeUpdate();
 			st.close();
@@ -42,12 +42,12 @@ public class OfertaDAO extends DAO{
 		
 		try {
 			Statement st = (Statement) conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			String sql = "SELECT * FROM produto WHERE id="+id;
+			String sql = "SELECT * FROM produto WHERE id="+id + ";";
 			ResultSet rs = ((java.sql.Statement) st).executeQuery(sql);	
 	        if(rs.next()){            
-	        	 oferta = new Oferta(rs.getInt("id"), rs.getString("data_final"), 
-	        			 			   rs.getInt("desconto"), 
-	                				   rs.getInt("Produto_id"));
+	        	 oferta = new Oferta(rs.getInt("id"), rs.getString("finaldate"), 
+	        			 			   rs.getInt("discount"), 
+	                				   rs.getInt("product_id"));
 	        }
 	        ((java.sql.Statement) st).close();
 		} catch (Exception e) {
@@ -59,6 +59,6 @@ public class OfertaDAO extends DAO{
 
 	
 	}	
-	*/
-}
+	
+
 

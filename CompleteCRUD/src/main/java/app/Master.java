@@ -38,6 +38,19 @@ public class Master {
 			return produtos;
 		}, gson::toJson);
 		
+		/*
+		post("/cadastroproduto", (req,res) -> {
+			
+			String json = "[\"victormenegusso@gmail.com\",\"teste@teste.com\",\"javeiro@php.com\"]";
+			Type tipoLista = new TypeToken<ArrayList<String>>() {}.getType();
+			ArrayList<String> lista = gson.fromJson(json, tipoLista);
+			ProdutoDAO dao = new ProdutoDAO();
+			List<Produto> produto = dao.insert();
+
+			res.type("application/json");
+			return produtosNome;
+		});
+		*/
 		
 			
 	}
