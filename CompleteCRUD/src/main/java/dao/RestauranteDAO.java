@@ -84,5 +84,23 @@ public class RestauranteDAO extends DAO{
 		}
 		return restaurantes;
 	}
+	
+	public boolean login (String name, String password) {
+		boolean meet = false;
+		
+		try {
+			String sql = "SELECT * FROM restaurant where name like" + name
+				          + "and password like " + password;
+			PreparedStatement st = conexao.prepareStatement(sql);
+			ResultSet rs = st.executeQuery();	           
+	        if(rs.next()) {	            	
+	        	meet = true;
+	        }
+	        st.close();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		return meet;
+	}
 }
 

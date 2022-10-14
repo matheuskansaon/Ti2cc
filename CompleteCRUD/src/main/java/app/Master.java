@@ -19,8 +19,6 @@ public class Master {
 		staticFiles.location("/");
 		 Gson gson = new Gson();
 		 
-		 
-		 
 		 // Métodos para listar restaurantes e produtos na página inicial
 		
 		get("/restaurantes", (req, res) -> {
