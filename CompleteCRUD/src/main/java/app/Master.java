@@ -25,7 +25,7 @@ public class Master {
 			String search = req.queryParamOrDefault("search", "");
 			RestauranteDAO dao = new RestauranteDAO();
 			List<Restaurante> restaurantes = dao.get(search);			
-			res.type("application/json");
+			res.type("applicat	ion/json");
 			return restaurantes;
 		}, gson::toJson);
 		
