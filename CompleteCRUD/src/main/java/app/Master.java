@@ -21,10 +21,7 @@ public class Master {
 		 
 		 // Métodos para listar restaurantes e produtos na página inicial
 		
-		get("/restaurantes", (req, res) -> restauranteService.getRestaurante(req,res), gson::toJson);
-		
-
-			
+		get("/restaurantes", (req, res) -> restauranteService.getRestaurante(req,res), gson::toJson);		
 		get("/produtos", (req, res) -> produtoService.getProdutos(req, res), gson::toJson);	
 			
 	}

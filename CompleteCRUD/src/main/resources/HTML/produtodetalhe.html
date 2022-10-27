@@ -79,16 +79,6 @@
                 autocomplete="off"
               />
             </div>
-            <div class="mb-3">
-              <label for="ProductDescription" class="form-label"
-                >Descrição do Produto</label
-              >
-              <textarea
-                class="form-control"
-                id="ProductDescription"
-                rows="3"
-              ></textarea>
-            </div>
 
             <div class="mb-3">
               <label for="ProductImage" class="form-label"
@@ -101,10 +91,34 @@
                 placeholder="Digite a URL para carregar a imagem"
               />
             </div>
+            <div class="mb-3">
+              <h2>Oferta</h2>
+            </div>
+
+            <div class="mb-3">
+              <label for="Offer-init" class="form-label">Data Inicial</label>
+              <input type="date" class="input-group date" id="initial-date" />
+            </div>
+            <div class="mb-3">
+              <label for="Offer-end" class="form-label">Data Final</label>
+              <input type="date" class="input-group date" id="final-date" />
+            </div>
+            <div class="mb-3">
+              <label for="ProductDiscount" class="form-label"
+                >Desconto (%)</label
+              >
+              <input
+                type="number"
+                class="form-control"
+                id="ProductDiscount"
+                placeholder="0"
+                autocomplete="off"
+              />
+            </div>
           </form>
           <div class="row">
             <div
-              class="col-12 mt-3 mb-5 d-flex justify-content-center align-items-center"
+              class="col-12 mt-3 mb-3 d-flex justify-content-center align-items-center"
             >
               <input
                 type="button"
