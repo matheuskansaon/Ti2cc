@@ -10,7 +10,6 @@ import dao.RestauranteDAO;
 import model.Produto;
 import model.Restaurante;
 
-
 public class Master {
 
 	public static void main(String[] args) {
@@ -38,6 +37,7 @@ public class Master {
 			return produtos;
 		}, gson::toJson);
 		
+//		get("/login", (req, res) -> src/main/resources/HTML.cadastroproduto.html(req, res));
 		/*
 		post("/cadastroproduto", (req,res) -> {
 			
