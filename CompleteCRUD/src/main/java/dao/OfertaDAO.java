@@ -3,8 +3,7 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 
 import model.Oferta;
@@ -25,8 +24,8 @@ public class OfertaDAO extends DAO{
 		boolean status = false;
 		try {
 			String sql = "INSERT INTO offer (id, finaldate, discount, product_id) "
-		               + "VALUES ('" + oferta.getId() + "', " + oferta.getFinaldate() + ", "
-		               + oferta.getDiscount() + ", " + oferta.getProduct_id() + ");";
+		               + "VALUES ('" + oferta.getId() + "', " + oferta.getInitialDate() + ", " 
+					   + oferta.getFinalDate() + ", " + oferta.getDiscount() + ", " + oferta.getProduct_id() + ");";
 			PreparedStatement st = conexao.prepareStatement(sql);
 			st.executeUpdate();
 			st.close();
@@ -45,7 +44,7 @@ public class OfertaDAO extends DAO{
 			String sql = "SELECT * FROM produto WHERE id="+id + ";";
 			ResultSet rs = ((java.sql.Statement) st).executeQuery(sql);	
 	        if(rs.next()){            
-	        	 oferta = new Oferta(rs.getInt("id"), rs.getString("finaldate"), 
+	        	 oferta = new Oferta(rs.getInt("id"), rs.getDate("initialDate"), rs.getDate("finalDate"), 
 	        			 			   rs.getInt("discount"), 
 	                				   rs.getInt("product_id"));
 	        }
