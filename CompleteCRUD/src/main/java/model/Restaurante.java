@@ -1,4 +1,5 @@
 package model;
+import java.util.Random;
 
 public class Restaurante {
 	private int id;
@@ -12,10 +13,16 @@ public class Restaurante {
 	/*
 	 * Constructor
 	 */
+	private int generateID() {
+		Random random = new Random();
+		int number = random.nextInt(1000);
+		return number;
+	}
+	
 	public Restaurante(String name, String login, String password, 
 			String description, String address, String urlLogo) {
 		//this.setID(RestauranteDAO.generatorID());
-		
+		this.setID(generateID());
 		this.setName(name);
 		this.setLogin(login);
 		this.setPassword(password);
@@ -31,7 +38,7 @@ public class Restaurante {
 	public Restaurante(int id, String name, String login, String password, 
 			String description, String address, String urlLogo) {	
 		
-		this.setId(id);
+		this.setID(id);
 		this.setName(name);
 		this.setLogin(login);
 		this.setPassword(password);
@@ -89,7 +96,7 @@ public class Restaurante {
 	public void setUrlLogo(String url) {
 		this.urlLogo = url;
 	}
-	public void setId(int id) {
+	public void setID(int id) {
 		this.id = id;
 	}
 	public int getId() {

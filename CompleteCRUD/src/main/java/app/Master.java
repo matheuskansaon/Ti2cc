@@ -22,7 +22,7 @@ public class Master {
 		 
 		get("/restaurantes", (req, res) -> restauranteService.getRestaurante(req,res), gson::toJson);		
 		get("/produtos", (req, res) -> produtoService.getProdutos(req, res), gson::toJson);	
-			
+		post("restaurante/insert", (request, response) -> restauranteService.insert(request, response));
 	}
 
 }
