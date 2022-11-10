@@ -12,7 +12,6 @@ import spark.Response;
 import model.Restaurante;
 public class RestauranteService {
 	
-	
 	public Object getRestaurante(Request req, Response res){
 		String search = req.queryParamOrDefault("search", "");
 		RestauranteDAO dao = new RestauranteDAO();
@@ -48,6 +47,8 @@ public class RestauranteService {
 	//	return form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\""+ resp +"\">");
 		return null;
 	}
+	
+	
 	
 	
 }
