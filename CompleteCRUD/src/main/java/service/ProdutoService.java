@@ -105,18 +105,17 @@ public class ProdutoService {
 	public Object insert(Request req, Response res) {
 		
 		String bodyString = req.body();
+		int created_productNameId = 0;
+		int created_productId = 0;
 		ProductBody productBody = gson.fromJson(bodyString, ProductBody.class);
 		
 		ProdutoNome newProdutoNome = new ProdutoNome(-1,productBody.getProductName());
+		created_productNameId = produtoNomeDAO.insert(newProdutoNome);
 		
-		if(produtoNomeDAO.insert(newProdutoNome) == true) {
-           System.out.println("deu certo");
-		} else {
-			System.out.println("não deu certo");
-		}
+		Produto newProduto = new Produto(-1, productBody.getProductImage(), productBody.getProductPrice(), created_productNameId, 5);
+		created_productId = produtoDAO.insert(newProduto);
 		
-		//Produto newProduto = new Produto(-1, productBody.getProductImage(), productBody.getProductPrice(), 2, 3);
-		//Oferta newOferta = new Oferta(-1,productBody.getProductInitialDate(), productBody.getProductFinalDate(), productBody.getProductDiscount(), 2);
+		Oferta newOferta = new Oferta(-1,productBody.getProductInitialDate(), productBody.getProductFinalDate(), productBody.getProductDiscount(), created_productId);
 		
 		
 		System.out.println(productBody.getProductName());

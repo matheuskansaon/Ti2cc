@@ -68,21 +68,26 @@ public class ProdutoDAO extends DAO{
 	
 	
 		
-	public boolean insert(Produto produto) {
+	public int insert(Produto produto) {
 		boolean status = false;
+		int lastId = 0;
 		try {
-			String sql = "INSERT INTO product (id, image, price, product_id, restaurante_id) "
-		               + "VALUES ('" + produto.getId() + "', " + produto.getImage() + ", "
+			String sql = "INSERT INTO product (image, price, product_id, restaurant_id) "
+		               + "VALUES ('" + produto.getImage() + "', "
 		               + produto.getPrice() + ", " + produto.getProduct_id() + ", "
 		               + produto.getRestaurant_id() + ");";
-			PreparedStatement st = conexao.prepareStatement(sql);
+			PreparedStatement st = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			st.executeUpdate();
+			ResultSet rs = st.getGeneratedKeys();
+			if (rs.next()) {
+			    lastId = rs.getInt("id");
+			}
 			st.close();
 			status = true;
 		} catch (SQLException u) {  
 			throw new RuntimeException(u);
 		}
-		return status;
+		return lastId;
 	}
 	
 	
