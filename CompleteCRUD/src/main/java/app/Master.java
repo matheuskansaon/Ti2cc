@@ -18,11 +18,14 @@ public class Master {
 		port(6789);
 		staticFiles.location("/");
 		 Gson gson = new Gson();
+		
 		 
 		 // Métodos para listar restaurantes e produtos na página inicial
 		
 		get("/restaurantes", (req, res) -> restauranteService.getRestaurante(req,res), gson::toJson);		
 		get("/produtos", (req, res) -> produtoService.getProdutos(req, res), gson::toJson);	
+		post("/produto/insert", (req, res) -> produtoService.insert(req, res));
+		//delete("/produto/delete/:id", (req, res) -> produtoService.delete(req, res));
 			
 	}
 

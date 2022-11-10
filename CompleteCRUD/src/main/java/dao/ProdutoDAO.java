@@ -90,12 +90,12 @@ public class ProdutoDAO extends DAO{
 		
 		try {
 			Statement st = (Statement) conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			String sql = "SELECT * FROM product WHERE id="+id + ";";
+			String sql = "SELECT * FROM product WHERE id="+id + ";"; // aqui colocar order by visualizações
 			ResultSet rs = ((java.sql.Statement) st).executeQuery(sql);	
 	        if(rs.next()){            
 	        	 produto = new Produto(rs.getInt("id"), rs.getString("image"), rs.getDouble("price"), 
 	        			 			   rs.getInt("product_id"), 
-	                				   rs.getInt("Rrestaurant_id")
+	                				   rs.getInt("restaurant_id")
 	                				   );
 	        }
 	        ((java.sql.Statement) st).close();
