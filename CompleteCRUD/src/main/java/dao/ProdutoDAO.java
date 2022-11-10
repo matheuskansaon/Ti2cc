@@ -32,6 +32,7 @@ public class ProdutoDAO extends DAO{
 					+ "product.price as \"product_price\", \r\n"
 					+ "product.product_id as \"productName_id\",\r\n"
 					+ "product.restaurant_id as \"productRestaurant_id\",\r\n"
+					+ "product.count_clicks as \"productCountClicks\",\r\n"
 					+ "product_name.name as \"product_name\" , \r\n"
 					+ "product_name.id as \"productName_id\" , \r\n"
 					+ "restaurant.id as \"restaurant_id\",\r\n"
@@ -54,7 +55,7 @@ public class ProdutoDAO extends DAO{
 	        	Produto p = new Produto(rs.getInt("product_id"), rs.getString("product_image"), rs.getDouble("product_price"), 
 										rs.getInt("productName_id"),  rs.getInt("productRestaurant_id"), new Restaurante(rs.getInt("restaurant_id"), rs.getString("restaurant_name"), 
 												rs.getString("restaurant_login"), rs.getString("restaurant_password"), rs.getString("restaurant_description"), 
-												rs.getString("restaurant_address"), rs.getString("restaurant_logo")), rs.getString("product_name"));
+												rs.getString("restaurant_address"), rs.getString("restaurant_logo")), rs.getString("product_name"), rs.getInt("productCountClicks"));
 	        			                
 	            produtos.add(p);
 	        }
