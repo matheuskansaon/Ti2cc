@@ -10,7 +10,6 @@ import com.google.gson.Gson;
 
 public class ProdutoService {
 	
-
 	Gson gson = new Gson();
 	
 	class ProductBody{
