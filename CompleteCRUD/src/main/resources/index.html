@@ -148,6 +148,21 @@
                             <p class="card-text">Açaí do Bairro</p>
                           </div>
                         </div>
+                         <!-----BOTAO DE CONTAR CURTIDAS-------------------------------------------------------------------
+                        <button id="saibaMais" onClick="incrementClick()"> Saiba mais </button>
+                        <h3 id="counter-label">0</h3></center>
+                      </div>
+                      <script>    
+                      var counterVal = 0;//alterar counterVal para a variavel do BD
+
+                        function incrementClick() {
+                          updateDisplay(++counterVal);
+                        }
+                        function updateDisplay(val) {//alterar updateDisplay para envio para o BD 
+                          
+                          console.log({id: 1,contador: counterVal, nome: titulo})//mondar com os valores do BD
+                        }</script>
+                        --------------------------------------------------------------------------------
                       </div>
                     </div>
                   </div> -->
