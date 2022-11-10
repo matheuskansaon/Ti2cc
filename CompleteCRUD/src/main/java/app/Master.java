@@ -25,7 +25,8 @@ public class Master {
 		get("/produtos", (req, res) -> produtoService.getProdutos(req, res), gson::toJson);	
 		post("/produto/insert", (req, res) -> produtoService.insert(req, res));
 		//delete("/produto/delete/:id", (req, res) -> produtoService.delete(req, res));
-		post("restaurante/insert", (request, response) -> restauranteService.insert(request, response));
+		//post("restaurante/insert", (request, response) -> restauranteService.insert(request, response));
+		get("/restaurante/insert", (request, response) -> "Hello Wolrd");
 	}
 
 }
