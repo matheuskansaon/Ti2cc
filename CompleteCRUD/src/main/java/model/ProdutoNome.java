@@ -12,6 +12,11 @@ public class ProdutoNome{
 		this.name = name;
 	}
 
+	public ProdutoNome(String name) {
+		super();
+		
+		this.name = name;
+	}
 
 	public ProdutoNome() {
 		super();
