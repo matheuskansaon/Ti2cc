@@ -24,19 +24,25 @@ public class ProdutoNomeDAO extends DAO{
 	
 	
 	
-	public boolean insert(ProdutoNome produtonome) {
+	public int insert(ProdutoNome produtonome) {
 		boolean status = false;
+		int lastId = 0;
 		try {
-			String sql = "INSERT INTO product_name (id, name)"
-		               + "VALUES ('" + produtonome.getId() + "', " + produtonome.getName() + ");";
-			PreparedStatement st = conexao.prepareStatement(sql);
+			String sql = "INSERT INTO product_name (name)"
+		               + "VALUES ('" + produtonome.getName() + "');";
+			PreparedStatement st = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			st.executeUpdate();
+			ResultSet rs = st.getGeneratedKeys();
+			if (rs.next()) {
+			    lastId = rs.getInt("id");
+			}
 			st.close();
 			status = true;
 		} catch (SQLException u) {  
 			throw new RuntimeException(u);
 		}
-		return status;
+		
+		return lastId;
 	}
 	
 	

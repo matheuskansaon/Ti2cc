@@ -32,6 +32,7 @@ public class ProdutoDAO extends DAO{
 					+ "product.price as \"product_price\", \r\n"
 					+ "product.product_id as \"productName_id\",\r\n"
 					+ "product.restaurant_id as \"productRestaurant_id\",\r\n"
+					+ "product.count_clicks as \"productCountClicks\",\r\n"
 					+ "product_name.name as \"product_name\" , \r\n"
 					+ "product_name.id as \"productName_id\" , \r\n"
 					+ "restaurant.id as \"restaurant_id\",\r\n"
@@ -54,7 +55,7 @@ public class ProdutoDAO extends DAO{
 	        	Produto p = new Produto(rs.getInt("product_id"), rs.getString("product_image"), rs.getDouble("product_price"), 
 										rs.getInt("productName_id"),  rs.getInt("productRestaurant_id"), new Restaurante(rs.getInt("restaurant_id"), rs.getString("restaurant_name"), 
 												rs.getString("restaurant_login"), rs.getString("restaurant_password"), rs.getString("restaurant_description"), 
-												rs.getString("restaurant_address"), rs.getString("restaurant_logo")), rs.getString("product_name"));
+												rs.getString("restaurant_address"), rs.getString("restaurant_logo")), rs.getString("product_name"), rs.getInt("productCountClicks"));
 	        			                
 	            produtos.add(p);
 	        }
@@ -67,21 +68,26 @@ public class ProdutoDAO extends DAO{
 	
 	
 		
-	public boolean insert(Produto produto) {
+	public int insert(Produto produto) {
 		boolean status = false;
+		int lastId = 0;
 		try {
-			String sql = "INSERT INTO product (id, image, price, product_id, restaurante_id) "
-		               + "VALUES ('" + produto.getId() + "', " + produto.getImage() + ", "
+			String sql = "INSERT INTO product (image, price, product_id, restaurant_id) "
+		               + "VALUES ('" + produto.getImage() + "', "
 		               + produto.getPrice() + ", " + produto.getProduct_id() + ", "
 		               + produto.getRestaurant_id() + ");";
-			PreparedStatement st = conexao.prepareStatement(sql);
+			PreparedStatement st = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			st.executeUpdate();
+			ResultSet rs = st.getGeneratedKeys();
+			if (rs.next()) {
+			    lastId = rs.getInt("id");
+			}
 			st.close();
 			status = true;
 		} catch (SQLException u) {  
 			throw new RuntimeException(u);
 		}
-		return status;
+		return lastId;
 	}
 	
 	

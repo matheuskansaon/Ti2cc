@@ -9,9 +9,10 @@ public class Produto{
 	private int restaurant_id;
 	private Restaurante restaurante;
 	private String name;
+	private int count_clicks;
 	
 	public Produto(int id, String image, double price, int product_id, int restaurant_id, Restaurante restaurante,
-			String name) {
+			String name, int count_clicks) {
 		super();
 		this.id = id;
 		this.image = image;
@@ -20,10 +21,10 @@ public class Produto{
 		this.restaurant_id = restaurant_id;
 		this.restaurante = restaurante;
 		this.name = name;
+		this.count_clicks = count_clicks;
 	}
 
 
-	
 	public Produto(int id, String image, double price, int product_id, int restaurant_id) {
 		super();
 		this.id = id;
@@ -34,6 +35,15 @@ public class Produto{
 	}
 
 
+	
+	public int getCount_clicks() {
+		return count_clicks;
+	}
+
+
+	public void setCount_clicks(int count_clicks) {
+		this.count_clicks = count_clicks;
+	}
 
 	public Produto() {
 		super();
