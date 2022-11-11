@@ -168,21 +168,56 @@
     
     <script> 
     
-    	function getValues(){
+      async function insert(restaurant) {
+		  console.log('chegou aqui')
+    	  const res = await fetch("/restaurante/insert", {
+		    method: "post",
+		    //body: JSON.stringify(restaurant),
+		  });
+		  
+		  if(res.status === 200) {
+			alert("Produto salvo com sucesso");
+		  } else {
+				alert("Ocorreu um erro ao salvar o produto");
+			  }
+		}
+		 
+    	 function getValues(){
     		let email = document.querySelector("#email").value;
     		let password = document.querySelector("#password").value;
     		let name = document.querySelector("#inputname").value;
     		let address = document.querySelector("#inputAddress").value;
     		let number = document.querySelector("#number").value;
-    		let biografy = document.querySelector("#imagem_logo").value;
+    		let biografy = document.querySelector("#Biografia").value;
+    		let logo = document.querySelector("#imagem_logo").value;
+    		
+    		let restaurant = {
+    				'email': email,
+    				'password': password,
+    				'name': name,
+    				'address': address,
+    				'biografy': biografy,
+    				'url': logo
+    		}
+    		
+    		console.log(restaurant)
+    		insert(restaurant);
+    		//fetch("http//localhost:6789/restaurante/insert");
+    		//fetch("/restaurante/insert" + location.search).then((resp) => resp.json());
     		
     		// console.log(email + '\n' + password + '\n'+ name + '\n' + address + '\n' + number + '\n' + biografy);	
     	}
+    	 
+    	 async function insert (restaurant){
+    		console.log('entrou')
+			await insert(restaurant);
+	    	  const res = await fetch("restaurante/insert", {
+			    method: "post",
+			    body: JSON.stringify(restaurant),
+			  });
+		}
     	
     	document.querySelector("#button").addEventListener("click", getValues);
-    	
-    	// let name = document.getElementById('email').value;
-    	// console.log(name + " Esse é o nome");
     </script>
     
     
