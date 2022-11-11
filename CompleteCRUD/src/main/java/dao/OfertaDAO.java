@@ -20,20 +20,29 @@ public class OfertaDAO extends DAO{
 	
 	
 	
-	public boolean insert(Oferta oferta) {
+	public int insert(Oferta oferta) {
 		boolean status = false;
+		int lastId = 0;
 		try {
-			String sql = "INSERT INTO offer (id, finaldate, discount, product_id) "
-		               + "VALUES ('" + oferta.getId() + "', " + oferta.getInitialDate() + ", " 
-					   + oferta.getFinalDate() + ", " + oferta.getDiscount() + ", " + oferta.getProduct_id() + ");";
-			PreparedStatement st = conexao.prepareStatement(sql);
+			String sql = "INSERT INTO offer (initialdate, finaldate, discount, product_id) "
+		               + "VALUES (?, ?, ?, ?);";
+			PreparedStatement st = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+			st.setDate(1, new java.sql.Date(oferta.getInitialDate().getTime()));
+			st.setDate(2, new java.sql.Date(oferta.getFinalDate().getTime()));
+			st.setInt(3, oferta.getDiscount());
+			st.setInt(4, oferta.getProduct_id());		
+		
 			st.executeUpdate();
+			ResultSet rs = st.getGeneratedKeys();
+			if (rs.next()) {
+			    lastId = rs.getInt("id");
+			}
 			st.close();
 			status = true;
 		} catch (SQLException u) {  
 			throw new RuntimeException(u);
 		}
-		return status;
+		return lastId;
 	}
 	
 	public Oferta get(int id) {
@@ -54,6 +63,24 @@ public class OfertaDAO extends DAO{
 		}
 		return oferta;
 	}
+	
+	public boolean delete(int id) {
+		boolean status = false;
+		
+		try {
+			String sql = "DELETE FROM offer WHERE product_id=?";
+			PreparedStatement st = conexao.prepareStatement(sql);	
+			st.setInt(1, id);
+			st.executeQuery();
+	        st.close();
+		} catch (Exception e) {
+			System.err.println(e.getMessage());
+		}
+		
+		return status;
+		
+	}
+	
 	
 
 	

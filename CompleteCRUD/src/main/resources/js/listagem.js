@@ -77,7 +77,7 @@ window.onload = async function listing() {
             src=${products[i].image}
             class="card-img-top"
             alt="${products[i].name}"
-            onerror="this.src='imagem/not-found.png'"
+            onerror="this.src='images/not-found.png'"
           />
           <div class="card-body">
             <div class="row">
@@ -94,6 +94,20 @@ window.onload = async function listing() {
                 <p class="card-text">${nome}</p>
               </div>
             </div>
+            <div class="row">
+              <div class="col-12 d-flex align-items-center">
+                <a
+                  type="button"
+                  class="btn btn-primary d-flex justify-content-center align-items-center"
+                  id="btn-saibamais"
+                  value=""
+                  href="#"
+                  onclick="event.preventDefault(), saibaMais(${products[i].id})"
+                >
+                  Saiba mais
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -105,3 +119,7 @@ window.onload = async function listing() {
     listagemProduto.innerHTML = strProduct;
   }
 };
+
+async function saibaMais(id){
+	await fetch(`/produto/countclick/${id}`, {method: "post"});
+}
