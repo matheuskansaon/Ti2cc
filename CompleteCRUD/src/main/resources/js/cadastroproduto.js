@@ -3,10 +3,16 @@ async function deleteProduct() {
 }
 
 async function insert(product) {
-  return fetch("/produto/insert", {
+  const res = await fetch("/produto/insert", {
     method: "post",
     body: JSON.stringify(product),
-  }).then((resp) => resp.json());
+  });
+  
+  if(res.status === 200) {
+	alert("Produto salvo com sucesso");
+  } else {
+	alert("Ocorreu um erro ao salvar o produto");
+  }
 }
 
 // const deleteProduto = document.getElementById("delete-produto");

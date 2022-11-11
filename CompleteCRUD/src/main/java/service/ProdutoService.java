@@ -93,6 +93,7 @@ public class ProdutoService {
 		
 	}
 	
+	// getProdutosByRestaurante
 	
 	public Object getProdutos(Request req, Response res){
 		String search = req.queryParamOrDefault("search", "");
@@ -102,11 +103,21 @@ public class ProdutoService {
 		return produtos;
 	}
 	
+	public Object getProdutosByRestaurante(Request req, Response res){
+		int restId = Integer.parseInt(req.params(":restId"));
+		ProdutoDAO dao = new ProdutoDAO();
+		List<Produto> produtos = dao.getByRestauranteId(restId);			
+		res.type("application/json");
+		return produtos;
+	}
+	
 	public Object insert(Request req, Response res) {
 		
 		String bodyString = req.body();
 		int created_productNameId = 0;
 		int created_productId = 0;
+		int created_offerId = 0;
+		System.out.println(bodyString);
 		ProductBody productBody = gson.fromJson(bodyString, ProductBody.class);
 		
 		ProdutoNome newProdutoNome = new ProdutoNome(-1,productBody.getProductName());
@@ -116,7 +127,8 @@ public class ProdutoService {
 		created_productId = produtoDAO.insert(newProduto);
 		
 		Oferta newOferta = new Oferta(-1,productBody.getProductInitialDate(), productBody.getProductFinalDate(), productBody.getProductDiscount(), created_productId);
-		
+		System.out.println(productBody.getProductInitialDate());
+		created_offerId = ofertaDAO.insert(newOferta);
 		
 		System.out.println(productBody.getProductName());
 		return res;
@@ -124,9 +136,21 @@ public class ProdutoService {
 	}
 	
 	public Object delete(Request req, Response res) {
-		
+		int idProduto = Integer.parseInt(req.params(":id"));
+		System.out.println("Id do produto deletado e: " + idProduto);
+		ofertaDAO.delete(idProduto);
+		ProdutoDAO dao = new ProdutoDAO();
+		dao.delete(idProduto);
 		return res;
 		
+	}
+	
+	public Object countClick(Request req, Response res) {
+		int idProduto = Integer.parseInt(req.params(":id"));
+		System.out.println("Id do produto clickado e: " + idProduto);
+		ProdutoDAO dao = new ProdutoDAO();
+		dao.incrementCountClick(idProduto);
+		return res;
 	}
 	
 	
