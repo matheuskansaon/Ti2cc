@@ -116,7 +116,7 @@
             <input
               type="text"
               class="form-control"
-              id="inputAddress2"
+              id="number"
               placeholder="Numero"
             />
           </div>
@@ -148,13 +148,16 @@
             <a
               id="button"
               class="btn btn-primary bk-color-blue d-flex justify-content-center align-items-center"
-              href="http://localhost:6789/restaurante/insert"
               role="button"
+              href="#"
+              onclick="event.preventDefault(); history.back()"
               >Finalizar Cadastro</a
             >
           </div>
         </div>
       </main>
+      
+      <!-- // http://localhost:6789/restaurante/insert -->
     </div>
 
     <script
@@ -163,8 +166,23 @@
       crossorigin="anonymous"
     ></script>
     
-    <script>
-    	document.queryElementById()
+    <script> 
+    
+    	function getValues(){
+    		let email = document.querySelector("#email").value;
+    		let password = document.querySelector("#password").value;
+    		let name = document.querySelector("#inputname").value;
+    		let address = document.querySelector("#inputAddress").value;
+    		let number = document.querySelector("#number").value;
+    		let biografy = document.querySelector("#imagem_logo").value;
+    		
+    		// console.log(email + '\n' + password + '\n'+ name + '\n' + address + '\n' + number + '\n' + biografy);	
+    	}
+    	
+    	document.querySelector("#button").addEventListener("click", getValues);
+    	
+    	// let name = document.getElementById('email').value;
+    	// console.log(name + " Esse é o nome");
     </script>
     
     

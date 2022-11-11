@@ -26,9 +26,9 @@ public class Master {
 		post("/produto/insert", (req, res) -> produtoService.insert(req, res));
 		//delete("/produto/delete/:id", (req, res) -> produtoService.delete(req, res));
 		//post("restaurante/insert", (request, response) -> restauranteService.insert(request, response));
-		get("/restaurante/insert", (request, response) -> "Hello Wolrd");
+		get("/restaurante/insert", (request, response) -> restauranteService.insert(request, response));
 		get("/produto/delete/:id", (req, res) -> produtoService.delete(req, res));
-		post("restaurante/insert", (request, response) -> restauranteService.insert(request, response));
+		//post("restaurante/insert", (request, response) -> restauranteService.insert(request, response));
 	}
 
 }
