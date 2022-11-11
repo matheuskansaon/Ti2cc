@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="../CSS/style.css" />
     <title>O que Tem PUC Coreu</title>
   </head>
-  <body onload="init()">
+  <body>
     <div class="container">
       <header>
         <div class="row">
@@ -98,33 +98,7 @@
                   <th scope="col-3">Preço</th>
                 </tr>
               </thead>
-              <tbody id="table_produtos">
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Produto 1</td>
-                  <td>R$5,50</td>
-                  <td>
-                    <a href="#" title="Editar">
-                      <i
-                        class="bi bi-pencil m-1"
-                        style="font-size: 1rem; color: #000c76"
-                      ></i
-                    ></a>
-                    <!-- <a href="#" title="Ver" id="ver-produto">
-                      <i
-                        class="bi bi-search m-1"
-                        style="font-size: 1rem; color: #000c76"
-                      ></i
-                    ></a> -->
-                    <a href="#" title="Deletar" id="delete-produto">
-                      <i
-                        class="bi bi-x-circle m-1"
-                        style="font-size: 1rem; color: #000c76"
-                      ></i
-                    ></a>
-                  </td>
-                </tr>
-              </tbody>
+              <tbody id="table_produtos"></tbody>
             </table>
           </div>
         </div>
@@ -161,7 +135,7 @@
               class="btn btn-primary bk-color-blue-sm d-flex justify-content-center align-items-center"
               id="back"
               value="Página Inicial"
-              href="index.html"
+              href="../index.html"
               >Página Inicial</a
             >
           </div>
@@ -170,7 +144,7 @@
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <script src="cadastroproduto.js"></script>
+    <script src="/js/produtoListagem.js"></script>
     <!--<script src="js/logout.js"></script>-->
   </body>
 </html>
